@@ -1,12 +1,16 @@
 const sequelize = require ('../../models');
 const { User } = sequelize;
 const token = require ('../../token/getToken')
-
+const crypto = require('crypto')
 const signin = async function(req, res) {
-    console.log(req.body)
+    let { email, password } = req.body;
+    var shasum = crypto.createHash('sha1');
+    let salt = 'random string';
+    shasum.update(password + salt);
+    password = shasum.digest('hex');
     try{
       await User.findAll({
-          where: {email: req.body.email, password: req.body.password}
+          where: {email: email, password: password}
       }).then((result) => {
           if(result[0]){
           token(result[0].dataValues.password).then(token => {

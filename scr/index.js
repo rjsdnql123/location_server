@@ -8,7 +8,7 @@ const commentsRouter = require('./routes/comments')
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "*"
 };
 
 app.use(cors(corsOptions));
