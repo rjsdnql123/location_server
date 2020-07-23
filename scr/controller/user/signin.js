@@ -11,10 +11,11 @@ const signin = async function(req, res) {
     try{
       await User.findAll({
           where: {email: email, password: password}
-      }).then((result) => {
-          if(result[0]){
-          token(result[0].dataValues.password).then(token => {
-              res.send(token)
+      }).then((user) => {
+          if(user[0]){
+            let {email, password } = user[0].dataValues;
+          token(email, password).then(token => {
+              res.status(200).send({ accessToken: token })
           })} else {
               res.status(404).send('아이디와 비밀번호 확인')
           }
