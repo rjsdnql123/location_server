@@ -13,11 +13,12 @@ const signin = async function(req, res) {
           where: {email: email, password: password}
       }).then((user) => {
           if(user[0]){
-            let {email, password } = user[0].dataValues;
-          token(email, password).then(token => {
+              console.log(user[0].dataValues,'이뭐냐')
+            let {id, email, password } = user[0].dataValues;
+          token(id, email, password).then(token => {
               res.status(200).send({ accessToken: token })
           })} else {
-              res.status(404).send('아이디와 비밀번호 확인')
+              res.status(404).send({error : '로그인실패'})
           }
       })
     }catch(error) {

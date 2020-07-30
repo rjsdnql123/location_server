@@ -2,10 +2,11 @@ const express = require("express");
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-  const getToken = (email,password) => {
+  const getToken = (user_Id,email,password) => {
     return new Promise((resolve, reject) => {
       jwt.sign(
         {
+          user_Id: user_Id,
           email: email,
           password: password     // 유저 정보
         },
