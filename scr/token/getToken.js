@@ -1,21 +1,23 @@
 const express = require("express");
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-  const getToken = (password) => {
+  const getToken = (user_Id,email,password) => {
     return new Promise((resolve, reject) => {
       jwt.sign(
         {
-        //   email: email,
+          user_Id: user_Id,
+          email: email,
           password: password     // 유저 정보
         },
         
-        'SeCrEtKeYfOrHaShInG',   // secrec Key
+        process.env.ACCESS_TOKEN_SECRET,   // secrec Key
         
         {
           expiresIn: '7d',
           issuer: 'inyongTest',   // options
           subject: 'userInfo'
-        }, 
+         }, 
         
         function(err,token){
           if(err) reject(err)      // callback
