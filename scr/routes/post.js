@@ -6,4 +6,5 @@ router.post('/post', postController.post)
 router.get('/getpost', postController.getpost)
 router.get('/allpost', postController.allpost)
 router.post('/deletepost', postController.deletepost)
+router.get('/location_Post', postController.location_Post)
 module.exports = router;
