@@ -3,7 +3,7 @@ const { Post } = sequelize;
 
 const post = async function(req, res) {
     try{
-        console.log(req.body,'body')
+        console.log(req.body.userId,'body')
         const { userId } = req.body;
       await Post.create({
         User_Id: userId,
