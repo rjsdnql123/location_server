@@ -13,10 +13,10 @@ const signin = async function(req, res) {
           where: {email: email, password: password}
       }).then((user) => {
           if(user[0]){
-              console.log(user[0].dataValues,'이뭐냐')
+              console.log(user[0].dataValues,'이뭐냐v')
             let {id, email, password } = user[0].dataValues;
           token(id, email, password).then(token => {
-              res.status(200).send({ accessToken: token })
+              res.status(200).send({ accessToken: token, userId: id })
           })} else {
               res.status(404).send({error : '로그인실패'})
           }
