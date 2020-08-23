@@ -10,7 +10,9 @@ const user_post = async function(req, res) {
             include: [
                 {
                     model: Post,
-                }        
+                },{
+                    model: Comments,
+                }
             ]
         }).then(result => {
             console.log(result)
