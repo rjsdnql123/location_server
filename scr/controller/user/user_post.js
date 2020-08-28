@@ -5,8 +5,15 @@ const user_post = async function(req, res) {
     const {userId} = req.query
     console.log(userId,'userId')
     try{
-        await Post.findAll({
-            where: {User_Id: userId}
+        await User.findAll({
+            where: {id: userId},
+            include: [
+                {
+                    model: Post,
+                },{
+                    model: Comments,
+                }
+            ]
         }).then(result => {
             console.log(result)
             res.send(result)
