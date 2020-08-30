@@ -1,8 +1,10 @@
+require('dotenv').config();
+
 module.exports = {
     HOST: "localhost",
-    USER: "root",
-    PASSWORD: "[dnjs1541]",
-    DB: "testdb",
+    USER: process.env.USER,
+    PASSWORD: process.env.MYSQL_PASSWORD,
+    DB: process.env.DB,
     dialect: "mysql",
     pool: {
       max: 5,
