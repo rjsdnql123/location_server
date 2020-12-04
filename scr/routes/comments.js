@@ -4,5 +4,6 @@ const { commentsController } = require('../controller');
 console.log(commentsController,'통과')
 router.post('/comments', commentsController.comments)
 router.post('/deletecomment', commentsController.deletecomment)
+router.get('/deletecomment', commentsController.pick)
 
 module.exports = router;
