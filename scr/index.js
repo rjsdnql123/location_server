@@ -5,6 +5,8 @@ const db = require("./models");
 const userRouter = require('./routes/user');
 const postRouter = require('./routes/post');
 const commentsRouter = require('./routes/comments')
+const cultureRouter = require('./routes/culture')
+
 const app = express();
 
 var corsOptions = {
@@ -29,6 +31,7 @@ db.sequelize.sync({ force: false }).then(() => {
 app.use('/user',userRouter)
 app.use('/post',postRouter)
 app.use('/comments',commentsRouter)
+app.use('/culture',cultureRouter)
 // simple route
 app.use("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });

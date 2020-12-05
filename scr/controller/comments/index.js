@@ -1,5 +1,5 @@
 module.exports = {
     comments: require('./comments'),
     deletecomment: require('./deletecomment'),
-    pick: require('./pick'),
+    // pick: require('./pick'),
 }
